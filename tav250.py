@@ -61,6 +61,8 @@ class TAV250(object):
         FwdPwr=int(powerMeasures[0:4],16)*0.1
         RefPwr=int(powerMeasures[4:8],16)*0.1
         InPwr=int(powerMeasures[8:],16)*0.1
+        if not self.onAir:
+            RefPwr=FwdPwr=0
         sleep(0.2)
         return [FwdPwr,FwdPwr,InPwr]
 
@@ -92,14 +94,14 @@ class TAV250(object):
         return alarms
 if __name__=='__main__':
     tav=TAV250()
-#    print(tav.GetPowerMeasures())
-#    print(tav.GetCurrentMeasures())
-#    print(tav.GetVoltageMeasures())
-#    print(tav.GetTempMeasures())
-#    sleep(0.1)
-#    print(tav.GetAlarms())
+    print(tav.GetPowerMeasures())
+    print(tav.GetCurrentMeasures())
+    print(tav.GetVoltageMeasures())
+    print(tav.GetTempMeasures())
+    sleep(0.1)
+    print(tav.GetAlarms())
 
-    tav.onAir=True	    
-    sleep(15)
-    tav.onAir=False
-    print(tav.onAir)	    
+#    tav.onAir=True	    
+#    sleep(15)
+#    tav.onAir=False
+#    print(tav.onAir)	    
